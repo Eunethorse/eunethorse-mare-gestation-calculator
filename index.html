@@ -83,6 +83,21 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f5f5f5;padding:1
 .notes-box:last-child{border-bottom:none}
 .notes-box:nth-child(even){background:var(--green-pale)}
 .footer{background:var(--green);color:var(--green-light);text-align:center;padding:.5rem;font-size:10px;border-radius:0 0 12px 12px}
+.legal-details{border-top:1px solid var(--border)}
+.legal-summary{padding:.7rem 1rem;font-size:11px;font-weight:600;color:var(--green);cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.legal-summary::-webkit-details-marker{display:none}
+.legal-summary::marker{display:none;content:""}
+.legal-content{padding:0 1rem .5rem}
+.legal-item{display:flex;gap:10px;padding:.5rem 0;border-top:1px solid var(--border)}
+.legal-item:first-child{border-top:none}
+.legal-icon{font-size:18px;flex-shrink:0;padding-top:2px}
+.legal-text{flex:1}
+.legal-label{font-size:10px;font-weight:600;color:var(--green-mid);margin-bottom:3px;text-transform:uppercase}
+.legal-text p{font-size:9px;color:var(--text2);line-height:1.5;margin:0}
+.legal-copyright{justify-content:center;text-align:center;padding:.7rem 0 .3rem}
+.legal-copyright p{font-size:9px;color:var(--text2);line-height:1.5;margin:0}
+.legal-copyright a{color:var(--green-mid);text-decoration:none}
+.legal-copyright a:hover{text-decoration:underline}
 .save-bar{display:flex;gap:8px;padding:.75rem 1rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
 .save-bar-left{display:flex;gap:8px;flex-wrap:wrap}
 .btn{border:none;border-radius:6px;padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
@@ -266,6 +281,46 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f5f5f5;padding:1
 <div class="section">
   <div class="section-hdr hdr-green" id="hdr-notes"></div>
   <div id="notes-list"></div>
+</div>
+
+<!-- AVISO LEGAL -->
+<div class="section">
+  <details class="legal-details">
+    <summary class="legal-summary" id="legal-title">⚖️ Aviso Legal (clic para expandir)</summary>
+    <div class="legal-content">
+      <div class="legal-item">
+        <div class="legal-icon">🩺</div>
+        <div class="legal-text">
+          <div class="legal-label" id="legal-vet-title">Aviso veterinario</div>
+          <p id="legal-vet-text">Esta herramienta se proporciona exclusivamente con fines educativos e informativos y no constituye asesoramiento veterinario. No debe sustituir una exploración veterinaria profesional. Consulte siempre a un veterinario cualificado para cualquier decisión relativa a la salud y el manejo reproductivo de sus animales.</p>
+        </div>
+      </div>
+      <div class="legal-item">
+        <div class="legal-icon">🔒</div>
+        <div class="legal-text">
+          <div class="legal-label" id="legal-privacy-title">Privacidad de datos</div>
+          <p id="legal-privacy-text">Esta aplicación no recoge, almacena ni transmite ningún dato personal ni imagen. Toda la información introducida permanece exclusivamente en su dispositivo.</p>
+        </div>
+      </div>
+      <div class="legal-item">
+        <div class="legal-icon">📄</div>
+        <div class="legal-text">
+          <div class="legal-label" id="legal-license-title">Licencia</div>
+          <p id="legal-license-text">Herramienta gratuita desarrollada en el marco del proyecto EUnetHorse (Horizon Europe #101086551). Se permite su reproducción citando la fuente.</p>
+        </div>
+      </div>
+      <div class="legal-item">
+        <div class="legal-icon">🇪🇺</div>
+        <div class="legal-text">
+          <div class="legal-label" id="legal-eu-title">Financiación europea</div>
+          <p id="legal-eu-text">Financiado por la Unión Europea en el marco del Acuerdo de Subvención n.º 101086551. Las opiniones expresadas son exclusivamente las de los autores y no reflejan necesariamente las de la Unión Europea ni las de la Agencia Ejecutiva Europea de Investigación (REA). Ni la Unión Europea ni la autoridad otorgante pueden ser consideradas responsables de las mismas.</p>
+        </div>
+      </div>
+      <div class="legal-item legal-copyright">
+        <p>© 2023–2027 EUnetHorse · Mirian Pateiro (CTC), Cristina Vierna (CTC) · <a href="https://www.eunethorse.eu" target="_blank" rel="noopener noreferrer">www.eunethorse.eu</a></p>
+      </div>
+    </div>
+  </details>
   <div class="footer">www.eunethorse.eu · EUnetHorse – Equine Farm Resilience Network</div>
 </div>
 </div>
@@ -346,6 +401,15 @@ confirmClearAll:{ES:"¿Eliminar TODOS los registros guardados? Esta acción no s
 methodNatural:{ES:"Monta Natural",EN:"Natural Mating",FR:"Saillie Naturelle",DE:"Natursprung",IT:"Monta Naturale",PT:"Monta Natural",PL:"Krycie Naturalne",NL:"Natuurlijke Dekking",RO:"Montă Naturală",FI:"Luonn. astutus"},
 methodIA:{ES:"Insem. Artificial",EN:"Art. Insemination",FR:"Insém. Artificielle",DE:"Künstl. Besamung",IT:"Insem. Artificiale",PT:"Insem. Artificial",PL:"Sztuczne Unasienianie",NL:"Kunstm. Inseminatie",RO:"Insem. Artificială",FI:"Keinoll. siemennys"},
 methodET:{ES:"Embrión Implantado",EN:"Embryo Transfer",FR:"Transfert Embryon",DE:"Embryotransfer",IT:"Trasf. Embrionale",PT:"Transf. de Embrião",PL:"Transfer Zarodka",NL:"Embryotransfer",RO:"Transfer Embrion",FI:"Alkionsiirto"},
+legalTitle:{ES:"⚖️ Aviso Legal (clic para expandir)",EN:"⚖️ Legal Notice (click to expand)",FR:"⚖️ Mentions Légales (cliquez pour développer)",DE:"⚖️ Rechtshinweis (zum Aufklappen klicken)",IT:"⚖️ Avviso Legale (clicca per espandere)",PT:"⚖️ Aviso Legal (clique para expandir)",PL:"⚖️ Nota Prawna (kliknij, aby rozwinąć)",NL:"⚖️ Juridische Mededeling (klik om uit te vouwen)",RO:"⚖️ Aviz Legal (clic pentru a extinde)",FI:"⚖️ Oikeudellinen huomautus (laajenna napsauttamalla)"},
+legalVetTitle:{ES:"Aviso veterinario",EN:"Veterinary disclaimer",FR:"Avertissement vétérinaire",DE:"Tierärztlicher Hinweis",IT:"Avviso veterinario",PT:"Aviso veterinário",PL:"Zastrzeżenie weterynaryjne",NL:"Veterinaire disclaimer",RO:"Avertisment veterinar",FI:"Eläinlääketieteellinen vastuuvapauslauseke"},
+legalVetText:{ES:"Esta herramienta se proporciona exclusivamente con fines educativos e informativos y no constituye asesoramiento veterinario. No debe sustituir una exploración veterinaria profesional. Consulte siempre a un veterinario cualificado para cualquier decisión relativa a la salud y el manejo reproductivo de sus animales.",EN:"This tool is provided solely for educational and informational purposes and does not constitute veterinary advice. It should not replace a professional veterinary examination. Always consult a qualified veterinarian for any decisions regarding the health and reproductive management of your animals.",FR:"Cet outil est fourni uniquement à des fins éducatives et informatives et ne constitue pas un avis vétérinaire. Il ne doit pas se substituer à un examen vétérinaire professionnel. Consultez toujours un vétérinaire qualifié pour toute décision relative à la santé et à la gestion reproductive de vos animaux.",DE:"Dieses Tool dient ausschließlich zu Bildungs- und Informationszwecken und stellt keine tierärztliche Beratung dar. Es sollte eine professionelle tierärztliche Untersuchung nicht ersetzen. Konsultieren Sie stets einen qualifizierten Tierarzt für alle Entscheidungen bezüglich der Gesundheit und des Reproduktionsmanagements Ihrer Tiere.",IT:"Questo strumento è fornito esclusivamente a scopo educativo e informativo e non costituisce consulenza veterinaria. Non deve sostituire un esame veterinario professionale. Consultare sempre un veterinario qualificato per qualsiasi decisione relativa alla salute e alla gestione riproduttiva dei propri animali.",PT:"Esta ferramenta é fornecida exclusivamente para fins educativos e informativos e não constitui aconselhamento veterinário. Não deve substituir um exame veterinário profissional. Consulte sempre um veterinário qualificado para qualquer decisão relativa à saúde e gestão reprodutiva dos seus animais.",PL:"To narzędzie jest udostępniane wyłącznie w celach edukacyjnych i informacyjnych i nie stanowi porady weterynaryjnej. Nie powinno zastępować profesjonalnego badania weterynaryjnego. Zawsze konsultuj się z wykwalifikowanym lekarzem weterynarii w sprawie wszelkich decyzji dotyczących zdrowia i zarządzania rozrodem zwierząt.",NL:"Dit hulpmiddel wordt uitsluitend ter educatieve en informatieve doeleinden aangeboden en vormt geen diergeneeskundig advies. Het mag een professioneel veterinair onderzoek niet vervangen. Raadpleeg altijd een gekwalificeerde dierenarts voor beslissingen over de gezondheid en het voortplantingsbeheer van uw dieren.",RO:"Acest instrument este furnizat exclusiv în scopuri educaționale și informative și nu constituie consiliere veterinară. Nu trebuie să înlocuiască o examinare veterinară profesională. Consultați întotdeauna un medic veterinar calificat pentru orice decizie privind sănătatea și managementul reproductiv al animalelor dumneavoastră.",FI:"Tämä työkalu on tarkoitettu ainoastaan koulutus- ja tiedotustarkoituksiin, eikä se ole eläinlääketieteellinen neuvo. Se ei saa korvata ammattimaista eläinlääkärin tutkimusta. Ota aina yhteyttä pätevään eläinlääkäriin kaikissa eläintesi terveyteen ja lisääntymisen hallintaan liittyvissä päätöksissä."},
+legalPrivacyTitle:{ES:"Privacidad de datos",EN:"Data privacy",FR:"Confidentialité des données",DE:"Datenschutz",IT:"Privacy dei dati",PT:"Privacidade de dados",PL:"Prywatność danych",NL:"Gegevensprivacy",RO:"Confidențialitatea datelor",FI:"Tietosuoja"},
+legalPrivacyText:{ES:"Esta aplicación no recoge, almacena ni transmite ningún dato personal ni imagen. Toda la información introducida permanece exclusivamente en su dispositivo.",EN:"This application does not collect, store or transmit any personal data or images. All information entered remains exclusively on your device.",FR:"Cette application ne collecte, ne stocke ni ne transmet aucune donnée personnelle ni aucune image. Toutes les informations saisies restent exclusivement sur votre appareil.",DE:"Diese Anwendung erhebt, speichert oder überträgt keine personenbezogenen Daten oder Bilder. Alle eingegebenen Informationen verbleiben ausschließlich auf Ihrem Gerät.",IT:"Questa applicazione non raccoglie, memorizza né trasmette alcun dato personale né immagine. Tutte le informazioni inserite rimangono esclusivamente sul vostro dispositivo.",PT:"Esta aplicação não recolhe, armazena nem transmite quaisquer dados pessoais ou imagens. Toda a informação introduzida permanece exclusivamente no seu dispositivo.",PL:"Ta aplikacja nie zbiera, nie przechowuje ani nie przesyła żadnych danych osobowych ani obrazów. Wszystkie wprowadzone informacje pozostają wyłącznie na Twoim urządzeniu.",NL:"Deze applicatie verzamelt, bewaart of verzendt geen persoonlijke gegevens of afbeeldingen. Alle ingevoerde informatie blijft uitsluitend op uw apparaat.",RO:"Această aplicație nu colectează, stochează sau transmite date personale sau imagini. Toate informațiile introduse rămân exclusiv pe dispozitivul dumneavoastră.",FI:"Tämä sovellus ei kerää, tallenna eikä lähetä henkilötietoja tai kuvia. Kaikki syötetyt tiedot pysyvät yksinomaan laitteellasi."},
+legalLicenseTitle:{ES:"Licencia",EN:"License",FR:"Licence",DE:"Lizenz",IT:"Licenza",PT:"Licença",PL:"Licencja",NL:"Licentie",RO:"Licență",FI:"Lisenssi"},
+legalLicenseText:{ES:"Herramienta gratuita desarrollada en el marco del proyecto EUnetHorse (Horizon Europe #101086551). Se permite su reproducción citando la fuente.",EN:"Free tool developed within the framework of the EUnetHorse project (Horizon Europe #101086551). Reproduction is permitted provided the source is cited.",FR:"Outil gratuit développé dans le cadre du projet EUnetHorse (Horizon Europe #101086551). La reproduction est autorisée sous réserve de citer la source.",DE:"Kostenloses Tool, entwickelt im Rahmen des EUnetHorse-Projekts (Horizon Europe #101086551). Vervielfältigung mit Quellenangabe gestattet.",IT:"Strumento gratuito sviluppato nell'ambito del progetto EUnetHorse (Horizon Europe #101086551). La riproduzione è consentita citando la fonte.",PT:"Ferramenta gratuita desenvolvida no âmbito do projeto EUnetHorse (Horizon Europe #101086551). É permitida a reprodução citando a fonte.",PL:"Bezpłatne narzędzie opracowane w ramach projektu EUnetHorse (Horizon Europe #101086551). Reprodukcja dozwolona z podaniem źródła.",NL:"Gratis hulpmiddel ontwikkeld in het kader van het EUnetHorse-project (Horizon Europe #101086551). Reproductie is toegestaan mits bronvermelding.",RO:"Instrument gratuit dezvoltat în cadrul proiectului EUnetHorse (Horizon Europe #101086551). Reproducerea este permisă cu citarea sursei.",FI:"Ilmainen työkalu, joka on kehitetty EUnetHorse-hankkeen puitteissa (Horizon Europe #101086551). Jäljentäminen on sallittua lähde mainiten."},
+legalEuTitle:{ES:"Financiación europea",EN:"EU funding",FR:"Financement européen",DE:"EU-Finanzierung",IT:"Finanziamento europeo",PT:"Financiamento europeu",PL:"Finansowanie UE",NL:"EU-financiering",RO:"Finanțare europeană",FI:"EU-rahoitus"},
+legalEuText:{ES:"Financiado por la Unión Europea en el marco del Acuerdo de Subvención n.º 101086551. Las opiniones expresadas son exclusivamente las de los autores y no reflejan necesariamente las de la Unión Europea ni las de la Agencia Ejecutiva Europea de Investigación (REA). Ni la Unión Europea ni la autoridad otorgante pueden ser consideradas responsables de las mismas.",EN:"Funded by the European Union under Grant Agreement No 101086551. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Executive Agency (REA). Neither the European Union nor the granting authority can be held responsible for them.",FR:"Financé par l'Union européenne dans le cadre de la convention de subvention n° 101086551. Les points de vue et opinions exprimés sont uniquement ceux des auteurs et ne reflètent pas nécessairement ceux de l'Union européenne ou de l'Agence exécutive européenne pour la recherche (REA). Ni l'Union européenne ni l'autorité concédante ne peuvent en être tenues responsables.",DE:"Gefördert durch die Europäische Union im Rahmen der Finanzhilfevereinbarung Nr. 101086551. Die geäußerten Ansichten und Meinungen sind ausschließlich die der Autoren und spiegeln nicht unbedingt die der Europäischen Union oder der Europäischen Exekutivagentur für die Forschung (REA) wider. Weder die Europäische Union noch die Bewilligungsbehörde können dafür verantwortlich gemacht werden.",IT:"Finanziato dall'Unione europea nell'ambito dell'accordo di sovvenzione n. 101086551. I punti di vista e le opinioni espressi sono esclusivamente quelli degli autori e non riflettono necessariamente quelli dell'Unione europea o dell'Agenzia esecutiva europea per la ricerca (REA). Né l'Unione europea né l'autorità concedente possono esserne ritenute responsabili.",PT:"Financiado pela União Europeia ao abrigo do Acordo de Subvenção n.º 101086551. Os pontos de vista e opiniões expressos são exclusivamente os dos autores e não refletem necessariamente os da União Europeia ou da Agência de Execução Europeia da Investigação (REA). Nem a União Europeia nem a autoridade concedente podem ser responsabilizadas pelos mesmos.",PL:"Finansowane przez Unię Europejską w ramach umowy o grant nr 101086551. Wyrażone poglądy i opinie są jedynie poglądami autorów i niekoniecznie odzwierciedlają stanowisko Unii Europejskiej lub Europejskiej Agencji Wykonawczej ds. Badań Naukowych (REA). Ani Unia Europejska, ani organ przyznający grant nie ponoszą za nie odpowiedzialności.",NL:"Gefinancierd door de Europese Unie in het kader van subsidieovereenkomst nr. 101086551. De geuite standpunten en meningen zijn uitsluitend die van de auteurs en weerspiegelen niet noodzakelijk die van de Europese Unie of het Europees Uitvoerend Agentschap voor onderzoek (REA). Noch de Europese Unie, noch de subsidieverlenende autoriteit kan daarvoor verantwoordelijk worden gehouden.",RO:"Finanțat de Uniunea Europeană în cadrul Acordului de grant nr. 101086551. Opiniile exprimate aparțin exclusiv autorilor și nu reflectă neapărat punctul de vedere al Uniunii Europene sau al Agenției Executive Europene pentru Cercetare (REA). Nici Uniunea Europeană, nici autoritatea care acordă grantul nu pot fi considerate responsabile pentru acestea.",FI:"Euroopan unionin rahoittama avustussopimuksen nro 101086551 puitteissa. Esitetyt näkemykset ja mielipiteet ovat ainoastaan kirjoittajien omia eivätkä välttämättä vastaa Euroopan unionin tai Euroopan tutkimuksen toimeenpanoviraston (REA) kantaa. Euroopan unioni tai myöntävä viranomainen eivät ole niistä vastuussa."},
 };
 const HITOS=[
 {day1:14,day2:16,name:{ES:"Día 14–16: 1.ª Ecografía",EN:"Day 14–16: 1st Ultrasound",FR:"Jour 14–16: 1ère Échographie",DE:"Tag 14–16: 1. Ultraschall",IT:"Giorno 14–16: 1° Ecografia",PT:"Dia 14–16: 1.ª Ecografia",PL:"Dzień 14–16: 1. USG",NL:"Dag 14–16: 1e Echo",RO:"Ziua 14–16: Prima Ecografie",FI:"Päivä 14–16: 1. Ultraääni"},desc:{ES:"Confirmar gestación. Vesícula embrionaria (25–30 mm). Verificar gemelos.",EN:"Confirm pregnancy. Embryonic vesicle (25–30 mm). Check for twins.",FR:"Confirmer gestation. Vésicule embryonnaire (25–30 mm). Vérifier jumeaux.",DE:"Trächtigkeit bestätigen. Embryonale Blase (25–30 mm). Zwillinge prüfen.",IT:"Confermare gestazione. Vescicola embrionale (25–30 mm). Gemelli.",PT:"Confirmar gestação. Vesícula embrionária (25–30 mm). Gémeos.",PL:"Potwierdzenie ciąży. Pęcherzyk (25–30 mm). Bliźnięta.",NL:"Bevestig dracht. Blaasje (25–30 mm). Tweelingen.",RO:"Confirmare gestație. Veziculă (25–30 mm). Gemeni.",FI:"Vahvista tiineys. Alkiokupla (25–30 mm). Kaksoset."}},
@@ -619,6 +683,15 @@ function applyLang(){
   document.getElementById('rgh-foal').textContent=t('rghFoal');
   updateResults();
   renderRegistry();
+  document.getElementById('legal-title').textContent=t('legalTitle');
+  document.getElementById('legal-vet-title').textContent=t('legalVetTitle');
+  document.getElementById('legal-vet-text').textContent=t('legalVetText');
+  document.getElementById('legal-privacy-title').textContent=t('legalPrivacyTitle');
+  document.getElementById('legal-privacy-text').textContent=t('legalPrivacyText');
+  document.getElementById('legal-license-title').textContent=t('legalLicenseTitle');
+  document.getElementById('legal-license-text').textContent=t('legalLicenseText');
+  document.getElementById('legal-eu-title').textContent=t('legalEuTitle');
+  document.getElementById('legal-eu-text').textContent=t('legalEuText');
 }
 
 function buildLangSel(){
