@@ -214,46 +214,47 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f5f5f5;padding:1
   </div>
   <div class="save-bar">
     <div class="save-bar-left">
-      <button class="btn btn-save" id="btn-save" onclick="saveRecord()">💾 <span id="btn-save-label"></span></button>
-      <button class="btn btn-secondary" id="btn-clear" onclick="clearForm()">↺ <span id="btn-clear-label"></span></button>
+      <button class="btn btn-save" id="btn-save" onclick="saveRecord()">💾 <span id="btn-save-label">Guardar en el registro</span></button>
+      <button class="btn btn-secondary" id="btn-clear" onclick="clearForm()">↺ <span id="btn-clear-label">Nueva ficha</span></button>
     </div>
     <div class="save-status" id="save-status"></div>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-hdr hdr-green" id="hdr-hitos"></div>
+  <div class="section-hdr hdr-green" id="hdr-hitos">HITOS VETERINARIOS CLAVE</div>
   <div class="hitos-list" id="hitos-list"></div>
 </div>
 
 <div class="section">
-  <div class="section-hdr hdr-lilac" id="hdr-monitor"></div>
+  <div class="section-hdr hdr-lilac" id="hdr-monitor">NOTAS Y SEGUIMIENTO</div>
   <table class="monitor-table">
-    <thead><tr><th id="mh-date" style="width:120px"></th><th id="mh-obs"></th><th id="mh-vet" style="width:140px"></th></tr></thead>
+    <thead><tr><th id="mh-date" style="width:120px">Fecha</th><th id="mh-obs">Observación / Hallazgo</th><th id="mh-vet" style="width:140px">Veterinario</th></tr></thead>
     <tbody id="monitor-body"></tbody>
   </table>
 </div>
 
 <div class="section">
-  <div class="section-hdr hdr-green" id="hdr-ref"></div>
+  <div class="section-hdr hdr-green" id="hdr-ref">TABLAS DE REFERENCIA</div>
   <div style="padding:.7rem 1rem .3rem">
-    <div style="font-size:10px;font-weight:600;color:var(--green-mid);margin-bottom:.5rem" id="rt1-title"></div>
+    <div style="font-size:10px;font-weight:600;color:var(--green-mid);margin-bottom:.5rem" id="rt1-title">Días de gestación por grupo de raza y paridad</div>
     <table class="ref-table" style="margin-bottom:1rem">
-      <thead><tr><th style="text-align:left"></th><th id="rth-pony"></th><th id="rth-horse"></th></tr></thead>
+      <thead><tr><th style="text-align:left"></th><th id="rth-pony">Razas de Pony</th><th id="rth-horse">Razas de Caballo</th></tr></thead>
       <tbody id="ref-tbody"></tbody>
     </table>
-    <div style="font-size:10px;font-weight:600;color:var(--green-mid);margin-bottom:.5rem" id="rt2-title"></div>
+    <div style="font-size:10px;font-weight:600;color:var(--green-mid);margin-bottom:.5rem" id="rt2-title">Definición de trimestres (veterinaria equina estándar)</div>
   </div>
   <div id="trim-rows"></div>
   <div style="height:.5rem"></div>
 </div>
 
 <div class="section">
-  <div class="section-hdr hdr-lilac" id="hdr-registry"></div>
+  <div class="section-hdr hdr-lilac" id="hdr-registry">REGISTRO DE YEGUAS GUARDADAS</div>
   <div class="save-bar">
     <div class="save-bar-left">
-      <button class="btn btn-secondary" id="btn-export" onclick="exportCSV()">⬇ <span id="btn-export-label"></span></button>
-      <button class="btn btn-danger" id="btn-clearall" onclick="clearAllRecords()">🗑 <span id="btn-clearall-label"></span></button>
+      <button class="btn btn-secondary" id="btn-export" onclick="exportCSV()">⬇ <span id="btn-export-label">Exportar CSV</span></button>
+      <button class="btn btn-secondary" id="btn-export-xlsx" onclick="exportXLSX()" style="background:var(--green-pale);border-color:var(--green)">📊 <span id="btn-export-xlsx-label">Exportar Excel</span></button>
+      <button class="btn btn-danger" id="btn-clearall" onclick="clearAllRecords()">🗑 <span id="btn-clearall-label">Borrar todo</span></button>
     </div>
     <div class="save-status" id="reg-count"></div>
   </div>
@@ -261,15 +262,15 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f5f5f5;padding:1
     <table class="reg-table">
       <thead><tr>
         <th></th>
-        <th id="rgh-name"></th>
-        <th id="rgh-owner"></th>
-        <th id="rgh-vet"></th>
-        <th id="rgh-method"></th>
-        <th id="rgh-breed"></th>
-        <th id="rgh-parity"></th>
-        <th id="rgh-mdate"></th>
-        <th id="rgh-gdays"></th>
-        <th id="rgh-foal"></th>
+        <th id="rgh-name">Yegua</th>
+        <th id="rgh-owner">Propietario</th>
+        <th id="rgh-vet">Veterinario</th>
+        <th id="rgh-method">Método</th>
+        <th id="rgh-breed">Raza</th>
+        <th id="rgh-parity">Paridad</th>
+        <th id="rgh-mdate">Fecha</th>
+        <th id="rgh-gdays">Días</th>
+        <th id="rgh-foal">Parto Esperado</th>
         <th></th>
       </tr></thead>
       <tbody id="registry-body"></tbody>
@@ -279,7 +280,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f5f5f5;padding:1
 </div>
 
 <div class="section">
-  <div class="section-hdr hdr-green" id="hdr-notes"></div>
+  <div class="section-hdr hdr-green" id="hdr-notes">NOTAS Y FUENTES</div>
   <div id="notes-list"></div>
 </div>
 
@@ -309,15 +310,15 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f5f5f5;padding:1
           <p id="legal-license-text">Herramienta gratuita desarrollada en el marco del proyecto EUnetHorse (Horizon Europe #101086551). Se permite su reproducción citando la fuente.</p>
         </div>
       </div>
-      <div class="legal-item">
-        <div class="legal-icon">🇪🇺</div>
-        <div class="legal-text">
-          <div class="legal-label" id="legal-eu-title">Financiación europea</div>
-          <p id="legal-eu-text">Financiado por la Unión Europea en el marco del Acuerdo de Subvención n.º 101086551. Las opiniones expresadas son exclusivamente las de los autores y no reflejan necesariamente las de la Unión Europea ni las de la Agencia Ejecutiva Europea de Investigación (REA). Ni la Unión Europea ni la autoridad otorgante pueden ser consideradas responsables de las mismas.</p>
-        </div>
-      </div>
       <div class="legal-item legal-copyright">
-        <p>© 2023–2027 EUnetHorse · Mirian Pateiro (CTC), Cristina Vierna (CTC) · <a href="https://www.eunethorse.eu" target="_blank" rel="noopener noreferrer">www.eunethorse.eu</a></p>
+        <p>© 2024–2026 EUnetHorse · Coby Bolger, Cristina Vierna (CTC) · <a href="https://www.eunethorse.eu" target="_blank" rel="noopener noreferrer">www.eunethorse.eu</a></p>
+      </div>
+      <div class="legal-item" style="flex-direction:column;gap:8px;padding-top:10px;border-top:2px solid var(--green-mid)">
+        <div style="display:flex;align-items:center;gap:10px;justify-content:center;flex-wrap:wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 540" width="60" height="40" style="flex-shrink:0"><rect width="810" height="540" fill="#003399"/><g fill="#FFCC00" transform="translate(405,270)"><g id="s"><polygon points="0,-120 11.23,-36.18 95.11,-73.82 38.04,-18.54 73.82,95.11 0,-48 -73.82,95.11 -38.04,-18.54 -95.11,-73.82 -11.23,-36.18" transform="scale(0.3)"/></g><use href="#s" transform="rotate(30)"/><use href="#s" transform="rotate(60)"/><use href="#s" transform="rotate(90)"/><use href="#s" transform="rotate(120)"/><use href="#s" transform="rotate(150)"/><use href="#s" transform="rotate(180)"/><use href="#s" transform="rotate(210)"/><use href="#s" transform="rotate(240)"/><use href="#s" transform="rotate(270)"/><use href="#s" transform="rotate(300)"/><use href="#s" transform="rotate(330)"/></g></svg>
+          <div style="font-size:10px;font-weight:600;color:var(--green-mid);line-height:1.3" id="eu-funding-label">Funded by the European Union</div>
+        </div>
+        <p style="font-size:8px;color:var(--text2);line-height:1.5;text-align:center" id="eu-disclaimer-text">Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Executive Agency (REA). Neither the European Union nor the granting authority can be held responsible for them. Grant Agreement No. 101086551 · Horizon Europe · HORIZON-CL6-2022-GOVERNANCE-01.</p>
       </div>
     </div>
   </details>
@@ -381,6 +382,7 @@ trimC3:{ES:"Crecimiento fetal rápido (60% peso al nacer). Producción calostro.
 btnSave:{ES:"Guardar en el registro",EN:"Save to register",FR:"Enregistrer",DE:"Im Register speichern",IT:"Salva nel registro",PT:"Guardar no registo",PL:"Zapisz w rejestrze",NL:"Opslaan in register",RO:"Salvați în registru",FI:"Tallenna rekisteriin"},
 btnClear:{ES:"Nueva ficha",EN:"New form",FR:"Nouvelle fiche",DE:"Neues Formular",IT:"Nuova scheda",PT:"Nova ficha",PL:"Nowy formularz",NL:"Nieuw formulier",RO:"Formular nou",FI:"Uusi lomake"},
 btnExport:{ES:"Exportar CSV",EN:"Export CSV",FR:"Exporter CSV",DE:"CSV exportieren",IT:"Esporta CSV",PT:"Exportar CSV",PL:"Eksportuj CSV",NL:"CSV exporteren",RO:"Exportă CSV",FI:"Vie CSV"},
+btnExportXlsx:{ES:"Exportar Excel",EN:"Export Excel",FR:"Exporter Excel",DE:"Excel exportieren",IT:"Esporta Excel",PT:"Exportar Excel",PL:"Eksportuj Excel",NL:"Excel exporteren",RO:"Exportă Excel",FI:"Vie Excel"},
 btnClearAll:{ES:"Borrar todo",EN:"Clear all",FR:"Tout effacer",DE:"Alles löschen",IT:"Cancella tutto",PT:"Limpar tudo",PL:"Wyczyść wszystko",NL:"Alles wissen",RO:"Șterge tot",FI:"Tyhjennä kaikki"},
 hdrRegistry:{ES:"Registro de Yeguas Guardadas",EN:"Saved Mares Register",FR:"Registre des Juments Enregistrées",DE:"Register gespeicherter Stuten",IT:"Registro Cavalle Salvate",PT:"Registo de Éguas Guardadas",PL:"Rejestr Zapisanych Klaczy",NL:"Register Opgeslagen Merries",RO:"Registrul Iepelor Salvate",FI:"Tallennettujen tammojen rekisteri"},
 savedMsg:{ES:"✓ Guardado correctamente",EN:"✓ Saved successfully",FR:"✓ Enregistré avec succès",DE:"✓ Erfolgreich gespeichert",IT:"✓ Salvato con successo",PT:"✓ Guardado com sucesso",PL:"✓ Zapisano pomyślnie",NL:"✓ Succesvol opgeslagen",RO:"✓ Salvat cu succes",FI:"✓ Tallennettu onnistuneesti"},
@@ -408,8 +410,8 @@ legalPrivacyTitle:{ES:"Privacidad de datos",EN:"Data privacy",FR:"Confidentialit
 legalPrivacyText:{ES:"Esta aplicación no recoge, almacena ni transmite ningún dato personal ni imagen. Toda la información introducida permanece exclusivamente en su dispositivo.",EN:"This application does not collect, store or transmit any personal data or images. All information entered remains exclusively on your device.",FR:"Cette application ne collecte, ne stocke ni ne transmet aucune donnée personnelle ni aucune image. Toutes les informations saisies restent exclusivement sur votre appareil.",DE:"Diese Anwendung erhebt, speichert oder überträgt keine personenbezogenen Daten oder Bilder. Alle eingegebenen Informationen verbleiben ausschließlich auf Ihrem Gerät.",IT:"Questa applicazione non raccoglie, memorizza né trasmette alcun dato personale né immagine. Tutte le informazioni inserite rimangono esclusivamente sul vostro dispositivo.",PT:"Esta aplicação não recolhe, armazena nem transmite quaisquer dados pessoais ou imagens. Toda a informação introduzida permanece exclusivamente no seu dispositivo.",PL:"Ta aplikacja nie zbiera, nie przechowuje ani nie przesyła żadnych danych osobowych ani obrazów. Wszystkie wprowadzone informacje pozostają wyłącznie na Twoim urządzeniu.",NL:"Deze applicatie verzamelt, bewaart of verzendt geen persoonlijke gegevens of afbeeldingen. Alle ingevoerde informatie blijft uitsluitend op uw apparaat.",RO:"Această aplicație nu colectează, stochează sau transmite date personale sau imagini. Toate informațiile introduse rămân exclusiv pe dispozitivul dumneavoastră.",FI:"Tämä sovellus ei kerää, tallenna eikä lähetä henkilötietoja tai kuvia. Kaikki syötetyt tiedot pysyvät yksinomaan laitteellasi."},
 legalLicenseTitle:{ES:"Licencia",EN:"License",FR:"Licence",DE:"Lizenz",IT:"Licenza",PT:"Licença",PL:"Licencja",NL:"Licentie",RO:"Licență",FI:"Lisenssi"},
 legalLicenseText:{ES:"Herramienta gratuita desarrollada en el marco del proyecto EUnetHorse (Horizon Europe #101086551). Se permite su reproducción citando la fuente.",EN:"Free tool developed within the framework of the EUnetHorse project (Horizon Europe #101086551). Reproduction is permitted provided the source is cited.",FR:"Outil gratuit développé dans le cadre du projet EUnetHorse (Horizon Europe #101086551). La reproduction est autorisée sous réserve de citer la source.",DE:"Kostenloses Tool, entwickelt im Rahmen des EUnetHorse-Projekts (Horizon Europe #101086551). Vervielfältigung mit Quellenangabe gestattet.",IT:"Strumento gratuito sviluppato nell'ambito del progetto EUnetHorse (Horizon Europe #101086551). La riproduzione è consentita citando la fonte.",PT:"Ferramenta gratuita desenvolvida no âmbito do projeto EUnetHorse (Horizon Europe #101086551). É permitida a reprodução citando a fonte.",PL:"Bezpłatne narzędzie opracowane w ramach projektu EUnetHorse (Horizon Europe #101086551). Reprodukcja dozwolona z podaniem źródła.",NL:"Gratis hulpmiddel ontwikkeld in het kader van het EUnetHorse-project (Horizon Europe #101086551). Reproductie is toegestaan mits bronvermelding.",RO:"Instrument gratuit dezvoltat în cadrul proiectului EUnetHorse (Horizon Europe #101086551). Reproducerea este permisă cu citarea sursei.",FI:"Ilmainen työkalu, joka on kehitetty EUnetHorse-hankkeen puitteissa (Horizon Europe #101086551). Jäljentäminen on sallittua lähde mainiten."},
-legalEuTitle:{ES:"Financiación europea",EN:"EU funding",FR:"Financement européen",DE:"EU-Finanzierung",IT:"Finanziamento europeo",PT:"Financiamento europeu",PL:"Finansowanie UE",NL:"EU-financiering",RO:"Finanțare europeană",FI:"EU-rahoitus"},
-legalEuText:{ES:"Financiado por la Unión Europea en el marco del Acuerdo de Subvención n.º 101086551. Las opiniones expresadas son exclusivamente las de los autores y no reflejan necesariamente las de la Unión Europea ni las de la Agencia Ejecutiva Europea de Investigación (REA). Ni la Unión Europea ni la autoridad otorgante pueden ser consideradas responsables de las mismas.",EN:"Funded by the European Union under Grant Agreement No 101086551. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Executive Agency (REA). Neither the European Union nor the granting authority can be held responsible for them.",FR:"Financé par l'Union européenne dans le cadre de la convention de subvention n° 101086551. Les points de vue et opinions exprimés sont uniquement ceux des auteurs et ne reflètent pas nécessairement ceux de l'Union européenne ou de l'Agence exécutive européenne pour la recherche (REA). Ni l'Union européenne ni l'autorité concédante ne peuvent en être tenues responsables.",DE:"Gefördert durch die Europäische Union im Rahmen der Finanzhilfevereinbarung Nr. 101086551. Die geäußerten Ansichten und Meinungen sind ausschließlich die der Autoren und spiegeln nicht unbedingt die der Europäischen Union oder der Europäischen Exekutivagentur für die Forschung (REA) wider. Weder die Europäische Union noch die Bewilligungsbehörde können dafür verantwortlich gemacht werden.",IT:"Finanziato dall'Unione europea nell'ambito dell'accordo di sovvenzione n. 101086551. I punti di vista e le opinioni espressi sono esclusivamente quelli degli autori e non riflettono necessariamente quelli dell'Unione europea o dell'Agenzia esecutiva europea per la ricerca (REA). Né l'Unione europea né l'autorità concedente possono esserne ritenute responsabili.",PT:"Financiado pela União Europeia ao abrigo do Acordo de Subvenção n.º 101086551. Os pontos de vista e opiniões expressos são exclusivamente os dos autores e não refletem necessariamente os da União Europeia ou da Agência de Execução Europeia da Investigação (REA). Nem a União Europeia nem a autoridade concedente podem ser responsabilizadas pelos mesmos.",PL:"Finansowane przez Unię Europejską w ramach umowy o grant nr 101086551. Wyrażone poglądy i opinie są jedynie poglądami autorów i niekoniecznie odzwierciedlają stanowisko Unii Europejskiej lub Europejskiej Agencji Wykonawczej ds. Badań Naukowych (REA). Ani Unia Europejska, ani organ przyznający grant nie ponoszą za nie odpowiedzialności.",NL:"Gefinancierd door de Europese Unie in het kader van subsidieovereenkomst nr. 101086551. De geuite standpunten en meningen zijn uitsluitend die van de auteurs en weerspiegelen niet noodzakelijk die van de Europese Unie of het Europees Uitvoerend Agentschap voor onderzoek (REA). Noch de Europese Unie, noch de subsidieverlenende autoriteit kan daarvoor verantwoordelijk worden gehouden.",RO:"Finanțat de Uniunea Europeană în cadrul Acordului de grant nr. 101086551. Opiniile exprimate aparțin exclusiv autorilor și nu reflectă neapărat punctul de vedere al Uniunii Europene sau al Agenției Executive Europene pentru Cercetare (REA). Nici Uniunea Europeană, nici autoritatea care acordă grantul nu pot fi considerate responsabile pentru acestea.",FI:"Euroopan unionin rahoittama avustussopimuksen nro 101086551 puitteissa. Esitetyt näkemykset ja mielipiteet ovat ainoastaan kirjoittajien omia eivätkä välttämättä vastaa Euroopan unionin tai Euroopan tutkimuksen toimeenpanoviraston (REA) kantaa. Euroopan unioni tai myöntävä viranomainen eivät ole niistä vastuussa."},
+euFundingLabel:{ES:"Financiado por la Unión Europea",EN:"Funded by the European Union",FR:"Financé par l'Union européenne",DE:"Von der Europäischen Union finanziert",IT:"Finanziato dall'Unione europea",PT:"Financiado pela União Europeia",PL:"Sfinansowane ze środków UE",NL:"Gefinancierd door de Europese Unie",RO:"Finanțat de Uniunea Europeană",FI:"Euroopan unionin rahoittama"},
+euDisclaimerText:{ES:"Financiado por la Unión Europea. Las opiniones y puntos de vista expresados solo comprometen a su(s) autor(es) y no reflejan necesariamente los de la Unión Europea o los de la Agencia Ejecutiva Europea de Investigación (REA). Ni la Unión Europea ni la REA pueden ser considerados responsables de ellos. Grant Agreement No. 101086551 · Horizon Europe · HORIZON-CL6-2022-GOVERNANCE-01.",EN:"Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Executive Agency (REA). Neither the European Union nor the granting authority can be held responsible for them. Grant Agreement No. 101086551 · Horizon Europe · HORIZON-CL6-2022-GOVERNANCE-01.",FR:"Financé par l'Union européenne. Les points de vue et avis exprimés n'engagent toutefois que leur(s) auteur(s) et ne reflètent pas nécessairement ceux de l'Union européenne ou de l'Agence exécutive européenne pour la recherche (REA). Ni l'Union européenne ni la REA ne sauraient en être tenues pour responsables. Grant Agreement No. 101086551 · Horizon Europe · HORIZON-CL6-2022-GOVERNANCE-01.",DE:"Von der Europäischen Union finanziert. Die geäußerten Ansichten und Meinungen entsprechen jedoch ausschließlich denen des Autors bzw. der Autoren und spiegeln nicht zwingend die der Europäischen Union oder der Europäischen Exekutivagentur für Forschung (REA) wider. Weder die Europäische Union noch die REA können dafür verantwortlich gemacht werden. Grant Agreement No. 101086551 · Horizon Europe · HORIZON-CL6-2022-GOVERNANCE-01.",IT:"Finanziato dall'Unione europea. Le opinioni espresse appartengono tuttavia al solo o ai soli autori e non riflettono necessariamente le opinioni dell'Unione europea o dell'Agenzia esecutiva europea per la ricerca (REA). Né l'Unione europea né la REA possono esserne ritenute responsabili. Grant Agreement No. 101086551 · Horizon Europe · HORIZON-CL6-2022-GOVERNANCE-01.",PT:"Financiado pela União Europeia. Os pontos de vista e as opiniões expressas são as do(s) autor(es) e não refletem necessariamente a posição da União Europeia ou da Agência de Execução Europeia para a Investigação (REA). Nem a União Europeia nem a REA podem ser tidos como responsáveis por essas opiniões. Grant Agreement No. 101086551 · Horizon Europe · HORIZON-CL6-2022-GOVERNANCE-01.",PL:"Sfinansowane ze środków UE. Wyrażone poglądy i opinie są jedynie opiniami autora lub autorów i niekoniecznie odzwierciedlają poglądy Unii Europejskiej lub Europejskiej Agencji Wykonawczej ds. Badań Naukowych (REA). Unia Europejska ani REA nie ponoszą za nie odpowiedzialności. Grant Agreement No. 101086551 · Horizon Europe · HORIZON-CL6-2022-GOVERNANCE-01.",NL:"Gefinancierd door de Europese Unie. De hier geuite ideeën en meningen komen uitsluitend voor rekening van de auteur(s) en geven niet noodzakelijkerwijs die van de Europese Unie of het Europees Uitvoerend Agentschap voor Onderzoek (REA) weer. Noch de Europese Unie, noch het REA kan ervoor aansprakelijk worden gesteld. Grant Agreement No. 101086551 · Horizon Europe · HORIZON-CL6-2022-GOVERNANCE-01.",RO:"Finanțat de Uniunea Europeană. Punctele de vedere și opiniile exprimate aparțin exclusiv autorului (autorilor) și nu reflectă neapărat punctele de vedere ale Uniunii Europene sau ale Agenției Executive Europene pentru Cercetare (REA). Nici Uniunea Europeană și nici REA nu pot fi considerate răspunzătoare. Grant Agreement No. 101086551 · Horizon Europe · HORIZON-CL6-2022-GOVERNANCE-01.",FI:"Euroopan unionin rahoittama. Esitetyt näkemykset ja mielipiteet ovat ainoastaan laatijoiden näkemyksiä eivätkä välttämättä vastaa EU:n tai Euroopan tutkimuksen toimeenpanovirasto (REA) kantaa. EU ja REA eivät ole vastuussa niistä. Grant Agreement No. 101086551 · Horizon Europe · HORIZON-CL6-2022-GOVERNANCE-01."},
 };
 const HITOS=[
 {day1:14,day2:16,name:{ES:"Día 14–16: 1.ª Ecografía",EN:"Day 14–16: 1st Ultrasound",FR:"Jour 14–16: 1ère Échographie",DE:"Tag 14–16: 1. Ultraschall",IT:"Giorno 14–16: 1° Ecografia",PT:"Dia 14–16: 1.ª Ecografia",PL:"Dzień 14–16: 1. USG",NL:"Dag 14–16: 1e Echo",RO:"Ziua 14–16: Prima Ecografie",FI:"Päivä 14–16: 1. Ultraääni"},desc:{ES:"Confirmar gestación. Vesícula embrionaria (25–30 mm). Verificar gemelos.",EN:"Confirm pregnancy. Embryonic vesicle (25–30 mm). Check for twins.",FR:"Confirmer gestation. Vésicule embryonnaire (25–30 mm). Vérifier jumeaux.",DE:"Trächtigkeit bestätigen. Embryonale Blase (25–30 mm). Zwillinge prüfen.",IT:"Confermare gestazione. Vescicola embrionale (25–30 mm). Gemelli.",PT:"Confirmar gestação. Vesícula embrionária (25–30 mm). Gémeos.",PL:"Potwierdzenie ciąży. Pęcherzyk (25–30 mm). Bliźnięta.",NL:"Bevestig dracht. Blaasje (25–30 mm). Tweelingen.",RO:"Confirmare gestație. Veziculă (25–30 mm). Gemeni.",FI:"Vahvista tiineys. Alkiokupla (25–30 mm). Kaksoset."}},
@@ -421,8 +423,8 @@ const HITOS=[
 {day1:180,day2:180,name:{ES:"Día 180: Evaluación nutricional",EN:"Day 180: Nutritional assessment",FR:"Jour 180: Évaluation nutritionnelle",DE:"Tag 180: Ernährungsbeurteilung",IT:"Giorno 180: Valutazione nutrizionale",PT:"Dia 180: Avaliação nutricional",PL:"Dzień 180: Ocena żywieniowa",NL:"Dag 180: Voedingsbeoordeling",RO:"Ziua 180: Evaluare nutrițională",FI:"Päivä 180: Ravitsemuksen arviointi"},desc:{ES:"Aumentar energía y proteína. BCS objetivo 5–6/9. Suplementación mineral (Ca, P, Mg).",EN:"Increase energy & protein. BCS target 5–6/9. Mineral supplementation (Ca, P, Mg).",FR:"Augmenter énergie et protéines. BCS cible 5–6/9. Supplémentation minérale.",DE:"Energie & Protein erhöhen. BCS Ziel 5–6/9. Mineralergänzung.",IT:"Aumentare energia e proteine. BCS 5–6/9. Integrazione minerale.",PT:"Aumentar energia e proteína. BCS 5–6/9. Suplementação mineral.",PL:"Zwiększ energię i białko. BCS 5–6/9. Suplementacja mineralna.",NL:"Verhoog energie & eiwit. BCS 5–6/9. Minerale suppletie.",RO:"Creșteți energia. BCS 5–6/9. Suplimentare minerale.",FI:"Lisää energia ja proteiini. BCS 5–6/9. Kivennäislisäys."}},
 {day1:225,day2:225,name:{ES:"Día 225: Fin del 2.º trimestre",EN:"Day 225: End of 2nd trimester",FR:"Jour 225: Fin du 2ème trimestre",DE:"Tag 225: Ende 2. Trimester",IT:"Giorno 225: Fine 2° trimestre",PT:"Dia 225: Fim do 2.º trimestre",PL:"Dzień 225: Koniec 2. trymestru",NL:"Dag 225: Einde 2e trimester",RO:"Ziua 225: Sfârşit Trim. 2",FI:"Päivä 225: 2. trimesterin loppu"},desc:{ES:"Crecimiento fetal rápido (~30% peso al nacer). Aumentar aporte energético.",EN:"Rapid fetal growth (~30% birth weight). Increase energy intake.",FR:"Croissance fœtale rapide (~30% poids naissance). Augmenter l'énergie.",DE:"Schnelles Wachstum (~30% Geburtsgewicht). Energiezufuhr erhöhen.",IT:"Crescita rapida (~30% peso nascita). Aumentare energia.",PT:"Crescimento rápido (~30% peso nascimento). Aumentar energia.",PL:"Szybki wzrost (~30% masy). Zwiększ energię.",NL:"Snelle groei (~30% geboortegewicht). Energie verhogen.",RO:"Creștere rapidă (~30%). Creșteți energia.",FI:"Nopea kasvu (~30% syntymäpainosta). Lisää energiaa."}},
 {day1:300,day2:300,name:{ES:"Día 300: Vacunaciones pre-parto",EN:"Day 300: Pre-foaling vaccinations",FR:"Jour 300: Vaccinations pré-poulinage",DE:"Tag 300: Vorgeburtsimpfungen",IT:"Giorno 300: Vaccinazioni pre-parto",PT:"Dia 300: Vacinações pré-parto",PL:"Dzień 300: Szczepienia przedporodowe",NL:"Dag 300: Pre-partus vaccinaties",RO:"Ziua 300: Vaccinări pre-fătare",FI:"Päivä 300: Synnytystä edeltävät rokotukset"},desc:{ES:"Refuerzo: EHV-1, influenza, tétanos, rotavirus. Calidad del calostro depende de la vacunación.",EN:"Booster: EHV-1, influenza, tetanus, rotavirus. Colostrum quality depends on correct vaccination.",FR:"Rappel: EHV-1, influenza, tétanos, rotavirus. Qualité colostrum.",DE:"Auffrischung: EHV-1, Influenza, Tetanus, Rotavirus. Kolostrumqualität.",IT:"Booster: EHV-1, influenza, tetano, rotavirus. Qualità colostro.",PT:"Reforço: EHV-1, influenza, tétano, rotavírus. Qualidade colostro.",PL:"Rappel: EHV-1, grypa, tężec, rotawirus. Jakość siary.",NL:"Booster: EHV-1, influenza, tetanus, rotavirus. Colostrumkwaliteit.",RO:"Rapel: EHV-1, gripă, tetanos, rotavirus. Calitate colostru.",FI:"Tehosterokote: EHV-1, influenssa, jäykkäkouristus, rotavirus."}},
-{day1:310,day2:310,name:{ES:"Día 310: Preparar zona de parto",EN:"Day 310: Prepare foaling area",FR:"Jour 310: Préparer zone de poulinage",DE:"Tag 310: Geburtsbereich vorbereiten",IT:"Giorno 310: Preparare area parto",PT:"Dia 310: Preparar área de parto",PL:"Dzień 310: Przygotuj miejsce",NL:"Dag 310: Geboorteruimte voorbereiden",RO:"Ziua 310: Pregătire zona fătare",FI:"Päivä 310: Valmistele varsomisalue"},desc:{ES:"Limpiar y desinfectar box (mín. 14 m²). Kit: yodo, guantes, toallas, calostro reserva. Cámara.",EN:"Clean & disinfect foaling box (min. 14 m²). Kit: iodine, gloves, towels, colostrum. Camera.",FR:"Nettoyer box (min. 14 m²). Kit: iode, gants, serviettes, colostrum. Caméra.",DE:"Abfohlbox reinigen (mind. 14 m²). Set: Jod, Handschuhe, Tücher, Kolostrum. Kamera.",IT:"Pulire box (min. 14 m²). Kit: iodio, guanti, asciugamani, colostro.",PT:"Limpar box (mín. 14 m²). Kit: iodo, luvas, toalhas, colostro.",PL:"Wyczyść boks (min. 14 m²). Zestaw: jod, rękawice, ręczniki.",NL:"Vervaaldoos reinigen (min. 14 m²). Kit: jodium, handschoenen, colostrum.",RO:"Curățați boxul (min. 14 m²). Kit: iod, mănuși, colostru.",FI:"Puhdista varsomiskarsi (väh. 14 m²). Pakkaus: jodi, hanskat."}},
-{day1:320,day2:360,name:{ES:"Días 320–360: Vigilancia de parto",EN:"Days 320–360: Foaling watch",FR:"Jours 320–360: Surveillance du poulinage",DE:"Tage 320–360: Geburtsüberwachung",IT:"Giorni 320–360: Sorveglianza parto",PT:"Dias 320–360: Vigilância do parto",PL:"Dni 320–360: Nadzór wyźrebienia",NL:"Dagen 320–360: Geboortebewaking",RO:"Zilele 320–360: Supraveghere fătare",FI:"Päivät 320–360: Varsomisen seuranta"},desc:{ES:"Signos: cera en ubre (24–48h), ligamentos relajados, inquietud. F.1: 1–4h | F.2: 20–30 min | F.3 (placenta): <3h.",EN:"Signs: udder waxing (24–48h), relaxed ligaments, restlessness. St.1: 1–4h | St.2: 20–30 min | St.3 (placenta): <3h.",FR:"Signes: cire (24–48h), ligaments relâchés. Ph.1: 1–4h | Ph.2: 20–30 min | Ph.3: <3h.",DE:"Zeichen: Wachs (24–48h), Unruhe. Ph.1: 1–4h | Ph.2: 20–30 min | Ph.3: <3h.",IT:"Segni: cera (24–48h), irrequietezza. F.1: 1–4h | F.2: 20–30 min | F.3: <3h.",PT:"Sinais: cera (24–48h), inquietação. F.1: 1–4h | F.2: 20–30 min | F.3: <3h.",PL:"Oznaki: wosk (24–48h), niepokój. F.1: 1–4h | F.2: 20–30 min | F.3: <3h.",NL:"Tekenen: was (24–48h), rusteloosheid. F.1: 1–4h | F.2: 20–30 min | F.3: <3h.",RO:"Semne: ceară (24–48h), neliniște. F.1: 1–4h | F.2: 20–30 min | F.3: <3h.",FI:"Merkit: vaha (24–48h), levottomuus. V.1: 1–4h | V.2: 20–30 min | V.3: <3h."}}
+{day1:310,day2:310,name:{ES:"Día 310: Preparar zona de parto",EN:"Day 310: Prepare foaling area",FR:"Jour 310: Préparer zone de poulinage",DE:"Tag 310: Geburtsbereich vorbereiten",IT:"Giorno 310: Preparare area parto",PT:"Dia 310: Preparar área de parto",PL:"Dzień 310: Przygotuj miejsce",NL:"Dag 310: Geboorteruimte voorbereiden",RO:"Ziua 310: Pregătire zona fătare",FI:"Päivä 310: Valmistele varsomisalue"},desc:{ES:"Opción A: Box (mín. 14 m²), limpiar y desinfectar. Opción B: Prado seguro (vallado, sin objetos peligrosos, acceso a agua limpia). Las yeguas están más tranquilas pariendo en grupos de yeguas. Kit: yodo, guantes, toallas, calostro reserva. Cámara de vigilancia.",EN:"Option A: Foaling box (min. 14 m²), clean & disinfect. Option B: Safe paddock (fenced, no hazards, clean water access). Mares are calmer foaling in groups of mares. Kit: iodine, gloves, towels, colostrum reserve. Surveillance camera.",FR:"Option A: Box (min. 14 m²), nettoyer et désinfecter. Option B: Pré sécurisé (clôturé, sans dangers, accès eau propre). Les juments sont plus calmes en poulinent en groupe. Kit: iode, gants, serviettes, colostrum. Caméra.",DE:"Option A: Abfohlbox (mind. 14 m²), reinigen und desinfizieren. Option B: Sichere Koppel (eingezäunt, keine Gefahren, sauberes Wasser). Stuten sind ruhiger beim Fohlen in Stutengruppen. Set: Jod, Handschuhe, Tücher, Kolostrum. Kamera.",IT:"Opzione A: Box (min. 14 m²), pulire e disinfettare. Opzione B: Paddock sicuro (recintato, senza pericoli, acqua pulita). Le cavalle sono più tranquille partorendo in gruppi. Kit: iodio, guanti, asciugamani, colostro. Telecamera.",PT:"Opção A: Box (mín. 14 m²), limpar e desinfetar. Opção B: Prado seguro (vedado, sem perigos, acesso a água limpa). As éguas estão mais calmas parindo em grupos. Kit: iodo, luvas, toalhas, colostro. Câmera.",PL:"Opcja A: Boks (min. 14 m²), wyczyścić i zdezynfekować. Opcja B: Bezpieczny padok (ogrodzony, bez zagrożeń, czysta woda). Klacze są spokojniejsze rodząc w grupach klaczy. Zestaw: jod, rękawice, ręczniki, siara. Kamera.",NL:"Optie A: Vervaaldoos (min. 14 m²), reinigen en desinfecteren. Optie B: Veilige paddock (omheind, geen gevaren, schoon water). Merries zijn rustiger bij veulenen in groepen. Kit: jodium, handschoenen, colostrum. Camera.",RO:"Opțiunea A: Box (min. 14 m²), curățat și dezinfectat. Opțiunea B: Padoc sigur (împrejmuit, fără pericole, apă curată). Iepele sunt mai calme fătând în grupuri. Kit: iod, mănuși, prosoape, colostru. Cameră.",FI:"Vaihtoehto A: Varsomiskarsi (väh. 14 m²), puhdista ja desinfioi. Vaihtoehto B: Turvallinen laidun (aidattu, ei vaaroja, puhdas vesi). Tammat ovat rauhallisempia varsomisessa ryhmissä. Pakkaus: jodi, hanskat, pyyhkeet, kolostrum. Kamera."}},
+{day1:320,day2:360,name:{ES:"Días 320–360: Vigilancia de parto",EN:"Days 320–360: Foaling watch",FR:"Jours 320–360: Surveillance du poulinage",DE:"Tage 320–360: Geburtsüberwachung",IT:"Giorni 320–360: Sorveglianza parto",PT:"Dias 320–360: Vigilância do parto",PL:"Dni 320–360: Nadzór wyźrebienia",NL:"Dagen 320–360: Geboortebewaking",RO:"Zilele 320–360: Supraveghere fătare",FI:"Päivät 320–360: Varsomisen seuranta"},desc:{ES:"Signos a observar: cera en ubre (24–48h antes del parto). ⚠ NO tocar la ubre ni quitar la cera. Ligamentos sacroilíacos relajados. Inquietud, sudoración. ── FASE 1 (Dilatación): 1–4 horas. Contracciones suaves, inquietud, sudoración, la yegua se acuesta y levanta repetidamente. ── FASE 2 (Expulsión del potro): 20–30 minutos. Rotura de aguas, contracciones fuertes, salida del potro. Si supera 30 min → llamar al veterinario. ── FASE 3 (Expulsión de la placenta): DEBE caer en las primeras 3 horas. ⚠ Si NO se expulsa en 3h → EMERGENCIA VETERINARIA (retención placentaria). No tirar de ella. ── Gestión de la placenta: subproducto animal SANDACH Categoría 3 según Reglamento (CE) 1069/2009 de la UE. Consultar normativa específica en cada país.",EN:"Signs to watch: udder waxing (24–48h before foaling). ⚠ Do NOT touch the udder or remove the wax. Relaxed sacroiliac ligaments. Restlessness, sweating. ── STAGE 1 (Dilation): 1–4 hours. Mild contractions, restlessness, sweating, mare lies down and gets up repeatedly. ── STAGE 2 (Foal delivery): 20–30 minutes. Water breaks, strong contractions, foal delivery. If over 30 min → call vet. ── STAGE 3 (Placenta expulsion): MUST be passed within the first 3 hours. ⚠ If NOT expelled in 3h → VETERINARY EMERGENCY (retained placenta). Do not pull. ── Placenta disposal: animal by-product SANDACH Cat. 3 per Regulation (EC) 1069/2009 EU. Check specific national regulations in each country.",FR:"Signes: cire sur mamelle (24–48h). ⚠ NE PAS toucher la mamelle ni retirer la cire. Ligaments relâchés. Agitation. ── PHASE 1 (Dilatation): 1–4h. Contractions légères, agitation. ── PHASE 2 (Expulsion du poulain): 20–30 min. Rupture des eaux, contractions fortes. Si >30 min → appeler le vétérinaire. ── PHASE 3 (Placenta): DOIT être expulsé dans les 3 premières heures. ⚠ Si non expulsé en 3h → URGENCE VÉTÉRINAIRE. Ne pas tirer. ── Gestion du placenta: sous-produit animal SANDACH Cat. 3, Règlement (CE) 1069/2009. Consulter la réglementation nationale.",DE:"Zeichen: Wachs am Euter (24–48h). ⚠ Euter NICHT berühren, Wachs NICHT entfernen. Entspannte Bänder. Unruhe. ── PHASE 1 (Öffnung): 1–4h. Leichte Wehen, Unruhe. ── PHASE 2 (Fohlengeburt): 20–30 min. Fruchtblase platzt, starke Wehen. Wenn >30 min → Tierarzt rufen. ── PHASE 3 (Nachgeburt): MUSS innerhalb von 3h abgehen. ⚠ Wenn nicht in 3h → TIERÄRZTLICHER NOTFALL. Nicht ziehen. ── Nachgeburt-Entsorgung: SANDACH Kat. 3, Verordnung (EG) 1069/2009. Nationale Vorschriften prüfen.",IT:"Segni: cera sulla mammella (24–48h). ⚠ NON toccare la mammella né rimuovere la cera. Legamenti rilassati. Irrequietezza. ── FASE 1 (Dilatazione): 1–4h. Contrazioni lievi, irrequietezza. ── FASE 2 (Espulsione del puledro): 20–30 min. Rottura delle acque, contrazioni forti. Se >30 min → chiamare il veterinario. ── FASE 3 (Placenta): DEVE essere espulsa entro 3 ore. ⚠ Se non espulsa in 3h → EMERGENZA VETERINARIA. Non tirare. ── Gestione placenta: SANDACH Cat. 3, Regolamento (CE) 1069/2009. Consultare normativa nazionale.",PT:"Sinais: cera na úbere (24–48h). ⚠ NÃO tocar na úbere nem retirar a cera. Ligamentos relaxados. Inquietação. ── FASE 1 (Dilatação): 1–4h. Contrações suaves, inquietação. ── FASE 2 (Expulsão do poldro): 20–30 min. Rotura de águas, contrações fortes. Se >30 min → chamar veterinário. ── FASE 3 (Placenta): DEVE ser expulsa nas primeiras 3 horas. ⚠ Se NÃO expulsa em 3h → EMERGÊNCIA VETERINÁRIA. Não puxar. ── Gestão da placenta: SANDACH Cat. 3, Regulamento (CE) 1069/2009. Consultar normativa nacional.",PL:"Oznaki: wosk na wymieniu (24–48h). ⚠ NIE dotykać wymienia ani nie usuwać wosku. Rozluźnione więzadła. Niepokój. ── FAZA 1 (Rozwarcie): 1–4h. Lekkie skurcze, niepokój. ── FAZA 2 (Wydalenie źrebięcia): 20–30 min. Odpłynięcie wód, silne skurcze. Jeśli >30 min → wezwać weterynarza. ── FAZA 3 (Łożysko): MUSI odejść w ciągu 3h. ⚠ Jeśli nie w 3h → NAGŁY WYPADEK WETERYNARYJNY. Nie ciągnąć. ── Utylizacja łożyska: SANDACH Kat. 3, Rozporządzenie (WE) 1069/2009. Sprawdzić przepisy krajowe.",NL:"Tekenen: was op uier (24–48h). ⚠ Uier NIET aanraken, was NIET verwijderen. Ontspannen banden. Rusteloosheid. ── FASE 1 (Ontsluiting): 1–4h. Lichte weeën, rusteloosheid. ── FASE 2 (Geboorte veulen): 20–30 min. Vliezen breken, sterke weeën. Als >30 min → dierenarts bellen. ── FASE 3 (Nageboorte): MOET binnen 3 uur komen. ⚠ Als niet in 3h → VETERINAIR NOODGEVAL. Niet trekken. ── Nageboorte-afvoer: SANDACH Cat. 3, Verordening (EG) 1069/2009. Raadpleeg nationale regelgeving.",RO:"Semne: ceară pe uger (24–48h). ⚠ NU atingeți ugerul, NU îndepărtați ceara. Ligamente relaxate. Neliniște. ── FAZA 1 (Dilatare): 1–4h. Contracții ușoare, neliniște. ── FAZA 2 (Expulzarea mânzului): 20–30 min. Ruperea apelor, contracții puternice. Dacă >30 min → apelați veterinarul. ── FAZA 3 (Placenta): TREBUIE expulzată în primele 3 ore. ⚠ Dacă NU în 3h → URGENȚĂ VETERINARĂ. Nu trageți. ── Gestionare placentă: SANDACH Cat. 3, Regulamentul (CE) 1069/2009. Consultați legislația națională.",FI:"Merkit: vaha utareessa (24–48h). ⚠ ÄLÄ koske utaretta, ÄLÄ poista vahaa. Rentoutuneet nivelsiteet. Levottomuus. ── VAIHE 1 (Avautuminen): 1–4h. Lievät supistukset, levottomuus. ── VAIHE 2 (Varsan syntymä): 20–30 min. Lapsivesi menee, voimakkaat supistukset. Jos >30 min → soita eläinlääkärille. ── VAIHE 3 (Istukka): ON poistuttava 3 tunnin kuluessa. ⚠ Jos EI 3h:ssa → ELÄINLÄÄKÄRIPÄIVYSTYS. Älä vedä. ── Istukan käsittely: SANDACH Kat. 3, asetus (EY) 1069/2009. Tarkista kansallinen lainsäädäntö."}}
 ];
 const NOTES={
 ES:["• Ajuste por edad: yeguas ≥15 años tienden a gestar ~1 día más (Rossdale & Ricketts, 1980).","• Primípara: yeguas con el 1.er potro paren ~2 días antes de media (Ginther, 1992).","• Ventana de parto normal: Días 320–360. Fuera de este rango requiere atención veterinaria inmediata.","• Fuentes: Ginther OJ (1992) · Davies Morel MCG (2008) · Rossdale & Ricketts (1980) · EUnetHorse (www.eunethorse.eu)."],
@@ -584,22 +586,53 @@ function escapeHtml(str){
 }
 
 function exportCSV(){
-  const list=loadRegistry();
+  var list=loadRegistry();
   if(list.length===0)return;
-  const headers=[t('rghName'),t('rghOwner'),t('rghVet'),t('rghMethod'),t('rghBreed'),t('rghParity'),t('rghMdate'),t('rghGdays'),t('rghFoal')];
-  const rows=list.map(r=>{
-    const mDate=r.matingDate?fmt(new Date(r.matingDate+'T12:00:00')):'';
-    const fDate=r.foalingDate?fmt(new Date(r.foalingDate)):'';
+  var headers=[t('rghName'),t('rghOwner'),t('rghVet'),t('rghMethod'),t('rghBreed'),t('rghParity'),t('rghMdate'),t('rghGdays'),t('rghFoal')];
+  var rows=list.map(function(r){
+    var mDate=r.matingDate?fmt(safeDateParse(r.matingDate)):'';
+    var fDate=r.foalingDate?fmt(new Date(r.foalingDate)):'';
     return [r.name,r.owner,r.vet,methodLabel(r.method),breedLabel(r.breed),parityLabel(r.parity),mDate,r.gestDays,fDate]
-      .map(v=>'"'+String(v||'').replace(/"/g,'""')+'"').join(',');
+      .map(function(v){return '"'+String(v||'').replace(/"/g,'""')+'"';}).join(',');
   });
-  const csv=[headers.join(','),...rows].join('\n');
-  const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url;
-  a.download='registro_yeguas_eunethorse.csv';
-  a.click();
+  var csv=[headers.join(',')].concat(rows).join('\n');
+  var blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');
+  a.href=url;a.download='registro_yeguas_eunethorse.csv';a.click();
+  URL.revokeObjectURL(url);
+}
+
+function exportXLSX(){
+  var list=loadRegistry();
+  if(list.length===0)return;
+  var h=[t('rghName'),t('rghOwner'),t('rghVet'),t('rghMethod'),t('rghBreed'),t('rghParity'),t('rghMdate'),t('rghGdays'),t('rghFoal')];
+  var data=[h];
+  list.forEach(function(r){
+    var mDate=r.matingDate?fmt(safeDateParse(r.matingDate)):'';
+    var fDate=r.foalingDate?fmt(new Date(r.foalingDate)):'';
+    data.push([r.name||'',r.owner||'',r.vet||'',methodLabel(r.method),breedLabel(r.breed),parityLabel(r.parity),mDate,r.gestDays||'',fDate]);
+  });
+  var xml='<?xml version="1.0" encoding="UTF-8"?>\n<?mso-application progid="Excel.Sheet"?>\n';
+  xml+='<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n';
+  xml+='<Styles><Style ss:ID="hdr"><Font ss:Bold="1" ss:Color="#FFFFFF" ss:FontName="Calibri" ss:Size="11"/><Interior ss:Color="#1B5E20" ss:Pattern="Solid"/><Alignment ss:Horizontal="Center"/></Style>';
+  xml+='<Style ss:ID="cell"><Font ss:FontName="Calibri" ss:Size="11"/><Alignment ss:Horizontal="Left"/></Style></Styles>\n';
+  xml+='<Worksheet ss:Name="Registro"><Table>\n';
+  xml+='<Column ss:Width="120"/><Column ss:Width="100"/><Column ss:Width="100"/><Column ss:Width="110"/><Column ss:Width="90"/><Column ss:Width="110"/><Column ss:Width="90"/><Column ss:Width="60"/><Column ss:Width="90"/>\n';
+  data.forEach(function(row,ri){
+    xml+='<Row>';
+    row.forEach(function(cell){
+      var style=ri===0?'hdr':'cell';
+      var val=String(cell).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      xml+='<Cell ss:StyleID="'+style+'"><Data ss:Type="String">'+val+'</Data></Cell>';
+    });
+    xml+='</Row>\n';
+  });
+  xml+='</Table></Worksheet></Workbook>';
+  var blob=new Blob([xml],{type:'application/vnd.ms-excel;charset=utf-8;'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');
+  a.href=url;a.download='registro_yeguas_eunethorse.xls';a.click();
   URL.revokeObjectURL(url);
 }
 
@@ -670,6 +703,7 @@ function applyLang(){
   document.getElementById('btn-save-label').textContent=t('btnSave');
   document.getElementById('btn-clear-label').textContent=t('btnClear');
   document.getElementById('btn-export-label').textContent=t('btnExport');
+  document.getElementById('btn-export-xlsx-label').textContent=t('btnExportXlsx');
   document.getElementById('btn-clearall-label').textContent=t('btnClearAll');
   document.getElementById('hdr-registry').textContent=t('hdrRegistry').toUpperCase();
   document.getElementById('rgh-name').textContent=t('rghName');
@@ -690,8 +724,8 @@ function applyLang(){
   document.getElementById('legal-privacy-text').textContent=t('legalPrivacyText');
   document.getElementById('legal-license-title').textContent=t('legalLicenseTitle');
   document.getElementById('legal-license-text').textContent=t('legalLicenseText');
-  document.getElementById('legal-eu-title').textContent=t('legalEuTitle');
-  document.getElementById('legal-eu-text').textContent=t('legalEuText');
+  document.getElementById('eu-funding-label').textContent=t('euFundingLabel');
+  document.getElementById('eu-disclaimer-text').textContent=t('euDisclaimerText');
 }
 
 function buildLangSel(){
