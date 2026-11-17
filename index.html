@@ -229,6 +229,9 @@ div.eh-hdr{display:block;width:100%;max-width:none;margin:0;padding:0;border:0;b
   var LINK_CTC = '<a href="https://www.ceteca.net" target="_blank" rel="noopener noreferrer">CTC (www.ceteca.net)</a>';
   var LINK_EH  = '<a href="https://www.eunethorse.eu" target="_blank" rel="noopener noreferrer">EUnetHorse (www.eunethorse.eu)</a>';
   function norm(c){ c=String(c||'en').toLowerCase(); return c==='nl'?'be':c; }
+  /* shared language preference: same origin (eunethorse.github.io) for all Digital Tools */
+  function saveLang(c){ try{ localStorage.setItem('eh-lang', norm(c)); }catch(e){} }
+  function storedLang(){ try{ return localStorage.getItem('eh-lang'); }catch(e){ return null; } }
   function esc(s){ return String(s).replace(/[&<>"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m];}); }
   var st = {langs:[], cur:'en', on:null};
   function T(code){ return I[norm(code||st.cur)] || I.en; }
@@ -260,19 +263,21 @@ div.eh-hdr{display:block;width:100%;max-width:none;margin:0;padding:0;border:0;b
       b.type = 'button'; b.className = 'eh-lang'; b.dataset.code = code;
       b.title = NAMES[k] || k.toUpperCase(); b.setAttribute('lang', k==='be'?'nl-BE':k);
       b.innerHTML = (FL[k]||'') + '<span>' + k.toUpperCase() + '</span>';
-      b.addEventListener('click', function(){ st.cur = code; paint(); if (st.on) st.on(code); });
+      b.addEventListener('click', function(){ st.cur = code; saveLang(code); paint(); if (st.on) st.on(code); });
       n.appendChild(b);
     });
   }
   window.EHH = {
-    init: function(o){ st.langs = o.langs || []; st.cur = o.current || st.langs[0]; st.on = o.onSelect; build(); paint(); },
+    init: function(o){ st.langs = o.langs || []; st.cur = o.current || st.langs[0]; st.on = o.onSelect; build(); paint();
+      var s = storedLang(), m = s && st.langs.filter(function(c){ return norm(c)===s; })[0];
+      if (m && norm(m)!==norm(st.cur)) setTimeout(function(){ st.cur = m; paint(); if (st.on) st.on(m); }, 0); },
     bindSelect: function(sel){
       if (typeof sel === 'string') sel = document.getElementById(sel);
       if (!sel) return;
       EHH.init({ langs: Array.prototype.map.call(sel.options, function(o){ return o.value; }).filter(Boolean),
                  current: sel.value,
                  onSelect: function(c){ sel.value = c; sel.dispatchEvent(new Event('change', {bubbles:true})); } });
-      sel.addEventListener('change', function(){ if (norm(sel.value)!==norm(st.cur)) { st.cur = sel.value; paint(); } });
+      sel.addEventListener('change', function(){ saveLang(sel.value); if (norm(sel.value)!==norm(st.cur)) { st.cur = sel.value; paint(); } });
     },
     setActive: function(c){ if (norm(c)!==norm(st.cur)) { st.cur = c; paint(); } },
     setTitle: function(txt){ var h = document.querySelector('.eh-bar h1'); if (h && h.textContent !== txt) h.textContent = txt; },
@@ -529,7 +534,7 @@ const T={
     "FR": "EUnetHorse · Réseau Européen des Élevages Equins",
     "DE": "EUnetHorse · Europäisches Pferdehaltungsnetzwerk",
     "IT": "EUnetHorse · Rete Europea Allevamenti Equini",
-    "PT": "EUnetHorse · Rede Europeia de Explorações Equinas",
+    "PT": "EUnetHorse · Rede Europeia para a Resiliência das Explorações Equinas",
     "PL": "EUnetHorse · Europejska Sieć Hodowców Koni",
     "BE": "EUnetHorse · Netwerk voor veerkracht van paardenbedrijven",
     "RO": "EUnetHorse · Rețeaua Europeană pentru Ferme Ecvine",
@@ -577,7 +582,7 @@ const T={
     "FR": "Jalons Vétérinaires Clés",
     "DE": "Tierärztliche Meilensteine",
     "IT": "Tappe Veterinarie",
-    "PT": "Marcos Veterinários",
+    "PT": "Etapas Veterinárias Chave",
     "PL": "Kamienie Milowe",
     "BE": "Veterinaire Mijlpalen",
     "RO": "Jaloane Veterinare",
@@ -890,7 +895,7 @@ const T={
     "FR": "Fin 1er trim. (Jour 114)",
     "DE": "Ende 1. Trim. (Tag 114)",
     "IT": "Fine 1° trim. (G. 114)",
-    "PT": "Fim 1.º trim. (Dia 114)",
+    "PT": "Fim 1.º terço (Dia 114)",
     "PL": "Koniec T1 (Dzień 114)",
     "BE": "Einde T1 (Dag 114)",
     "RO": "Sfârşit T1 (Ziua 114)",
@@ -902,7 +907,7 @@ const T={
     "FR": "Fin 2ème trim. (Jour 225)",
     "DE": "Ende 2. Trim. (Tag 225)",
     "IT": "Fine 2° trim. (G. 225)",
-    "PT": "Fim 2.º trim. (Dia 225)",
+    "PT": "Fim 2.º terço (Dia 225)",
     "PL": "Koniec T2 (Dzień 225)",
     "BE": "Einde T2 (Dag 225)",
     "RO": "Sfârşit T2 (Ziua 225)",
@@ -1851,6 +1856,9 @@ buildLangSel();buildMonitor();applyLang();renderRegistry();
 </script>
 <script>/* unified header boot */
 (function(){try{EHH.init({langs:Object.keys(LANGS),current:lang,onSelect:function(c){setLang(c);}});}catch(e){console.error("EH header",e)}})();
+</script>
+<script>/* offline support: registers sw.js (same folder) when served over https */
+(function(){ if ('serviceWorker' in navigator && location.protocol === 'https:') { window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); }); } })();
 </script>
 </body>
 </html>
